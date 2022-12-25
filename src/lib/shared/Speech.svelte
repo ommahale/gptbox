@@ -1,8 +1,8 @@
-<div class="bubble">
-    <slot>
-    </slot>
-</div>
 <div class="outer">
+    <div class="bubble">
+        <slot>
+        </slot>
+    </div>
     <div class="inner">
         <div class="bar-1"></div>
         <div class="bar-2"></div>
@@ -48,5 +48,7 @@
     .outer{
         display: flex;
         justify-content: flex-end;
+        flex-direction: column;
+        align-items: flex-end;
     }
 </style>

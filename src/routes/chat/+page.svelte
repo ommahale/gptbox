@@ -1,8 +1,10 @@
 <script>
     import Speech from "$lib/shared/Speech.svelte"
     import SpeechSec from "$lib/shared/SpeechSec.svelte"
+    import arrow from '$lib/assets/arrow.svg'
+    import { fade } from 'svelte/transition';
 </script>
-<div class="inner">
+<body transition:fade>
     <div>
         <div class="pri">
             <Speech>This is chat Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum eum, nesciunt veniam corrupti nulla nostrum? Nobis iure tempore ea pariatur!</Speech>
@@ -11,7 +13,11 @@
             <SpeechSec>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis, omnis reiciendis accusantium praesentium at tempora nihil aliquam ipsum minima repellendus repudiandae quibusdam? Impedit, adipisci! Quisquam nostrum dignissimos tenetur consectetur eveniet. This is chat Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum eum, nesciunt veniam corrupti nulla nostrum? Nobis iure tempore ea pariatur!</SpeechSec>
         </div>
     </div>
-</div>
+    <form >
+        <input type="text" placeholder="Type your message here">
+        <button type="submit"><img src="{arrow}" alt="arrow"></button>
+    </form>
+</body>
 <style>
     .pri{
         display: inline;
@@ -19,12 +25,51 @@
     .sec{
         display: inline;
     }
-    .inner{
-        height: 100vh;
-        width: 100vw;
-        background-color: #F5EBE0;
+    body{
         display: flex;
         justify-content: center;
+        width: 100vw;
+        height: 100vh;
+        background-color: antiquewhite;
     }
-    
+    body div{
+        width: 1100px;
+        display: inline;
+    }
+    form{
+        display: flex;
+        justify-content: center;
+        position: fixed;
+        top: 90.6%;
+        width: 100vw;
+        padding: 20px;
+        background-color: black;
+    }
+    input{
+        border-radius: 30px;
+        font-size: 1.1rem;
+        padding: 5px;
+        text-align: center;
+        border: 0px;
+        margin: 0 10px;
+        width: 400px;
+    }
+    button:hover{
+
+        background-color: rgb(48, 105, 105);
+
+    }
+    button{
+        background-color: darkcyan;
+        color: white;
+        font-size: 1.1rem;
+        border-radius: 50px;
+        cursor: pointer;
+        border: 0px;
+    }
+    img{
+        max-height: 50px;
+
+    }
+
 </style>
