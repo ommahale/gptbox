@@ -3,6 +3,11 @@
     import SpeechSec from "$lib/shared/SpeechSec.svelte"
     import arrow from '$lib/assets/arrow.svg'
     import { fade } from 'svelte/transition';
+    let data;
+    let handleClick=()=>{
+        console.log(data)
+        data=""
+    }
 </script>
 <body transition:fade>
     <div>
@@ -10,12 +15,12 @@
             <Speech>This is chat Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum eum, nesciunt veniam corrupti nulla nostrum? Nobis iure tempore ea pariatur!</Speech>
         </div>
         <div class="sec">
-            <SpeechSec>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis, omnis reiciendis accusantium praesentium at tempora nihil aliquam ipsum minima repellendus repudiandae quibusdam? Impedit, adipisci! Quisquam nostrum dignissimos tenetur consectetur eveniet. This is chat Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum eum, nesciunt veniam corrupti nulla nostrum? Nobis iure tempore ea pariatur!</SpeechSec>
+            <SpeechSec>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem tempora at nam optio earum laudantium id quo, quaerat perspiciatis iusto necessitatibus eos quia possimus nobis quasi ut sint a qui. {data}</SpeechSec>
         </div>
     </div>
     <form >
-        <input type="text" placeholder="Type your message here">
-        <button type="submit"><img src="{arrow}" alt="arrow"></button>
+        <input type="text" placeholder="Type your message here" bind:value={data}>
+        <button type="submit" on:click={handleClick}><img src="{arrow}" alt="arrow"></button>
     </form>
 </body>
 <style>
