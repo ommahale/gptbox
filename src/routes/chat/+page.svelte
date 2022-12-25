@@ -6,17 +6,43 @@
     let data;
     let handleClick=()=>{
         console.log(data)
+        let newMessage={
+            'isUser':true,
+            'message':data
+        }
+        messagelog=[...messagelog, newMessage]
         data=""
     }
+    let messagelog=[
+        {
+            "isUser":true,"message":"What is your name"
+        },
+        {
+            "isUser":false,"message":"GPT-3"
+        },
+    ]
 </script>
 <body transition:fade>
     <div>
-        <div class="pri">
+        <div class="pri" in:fade>
             <Speech>This is chat Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum eum, nesciunt veniam corrupti nulla nostrum? Nobis iure tempore ea pariatur!</Speech>
         </div>
         <div class="sec">
-            <SpeechSec>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem tempora at nam optio earum laudantium id quo, quaerat perspiciatis iusto necessitatibus eos quia possimus nobis quasi ut sint a qui. {data}</SpeechSec>
+            <SpeechSec>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem tempora at nam optio earum laudantium id quo, quaerat perspiciatis iusto necessitatibus eos quia possimus nobis quasi ut sint a qui.</SpeechSec>
         </div>
+        {#each messagelog as message}
+            {#if message['isUser']}
+                <div class="pri">
+                    <Speech>{message['message']}</Speech>
+                </div>
+                
+                {:else}
+                <div class="sec">
+                    <SpeechSec>{message['message']}</SpeechSec>
+                </div>
+            {/if}
+
+        {/each}
     </div>
     <form >
         <input type="text" placeholder="Type your message here" bind:value={data}>
@@ -74,7 +100,7 @@
     }
     img{
         max-height: 50px;
-
+        
     }
 
 </style>

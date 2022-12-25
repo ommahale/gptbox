@@ -19,14 +19,15 @@
         margin: 3px;
         display: inline-block;
         border-radius: 10px;
-        max-width: 500px;
+        width: 500px;
         box-shadow: 7px 7px 1px #344D67;
+        overflow-wrap: normal;
     }
     .bar-1{
         width: 30px;
         height: 10px;
         display: block;
-        margin: 5px;
+        margin: 2px;
         background-color: #E8C4C4;
         border-radius: 30px;
         box-shadow: 7px 7px 1px #344D67;
@@ -40,7 +41,7 @@
         width: 10px;
         display: block;
         height: 10px;
-        margin: 5px;
+        margin: 2px;
         background-color: #E8C4C4;
         border-radius: 30px;
         box-shadow: 7px 7px 1px #344D67;
