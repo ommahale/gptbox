@@ -6,7 +6,13 @@
     let data;
     async function handleClick(){
         let prompt= data
-        let API_KEY="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"
+        let API_KEY="API_KEY"
+        let newMessage={
+            'isUser':true,
+            'message':data
+        }
+        messagelog=[...messagelog, newMessage]
+        data=""
 //         axios.post("https://api.openai.com/v1/completions", {
 //   prompt: prompt,
 //   model: "davinci",
@@ -24,28 +30,30 @@
 //   .catch(error => {
 //     console.error(error);
 //   });
+let reply;
 let body= {
   "prompt": prompt,
-  "model": "davincitext-davinci-003",
-  "temprature":0,
-  "max_tokens": 100
+  "model": "text-davinci-003",
+  "max_tokens":100
 }
-const response = await fetch("https://api.openai.com/v1/", {
+const response = await fetch("https://api.openai.com/v1/completions", {
     method: 'POST',
     headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${API_KEY}`
+        "Authorization":`Bearer ${API_KEY}`,
+        'Content-Type': 'application/json'
     },
-    body: body
-  });
-  console.log(response)
-        let newMessage={
-            'isUser':true,
-            'message':data
+    body: JSON.stringify(body)
+  }).then((response) => response.json())
+  .then((data) => {
+    reply=data.choices[0].text
+  })
+  newMessage={
+            'isUser':false,
+            'message':reply
         }
         messagelog=[...messagelog, newMessage]
-        data=""
-    }
+
+}
     let messagelog=[
         {
             "isUser":true,"message":"What is your name"
@@ -57,12 +65,6 @@ const response = await fetch("https://api.openai.com/v1/", {
 </script>
 <body transition:fade>
     <div>
-        <div class="pri" in:fade>
-            <Speech>This is chat Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum eum, nesciunt veniam corrupti nulla nostrum? Nobis iure tempore ea pariatur!</Speech>
-        </div>
-        <div class="sec">
-            <SpeechSec>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem tempora at nam optio earum laudantium id quo, quaerat perspiciatis iusto necessitatibus eos quia possimus nobis quasi ut sint a qui.</SpeechSec>
-        </div>
         {#each messagelog as message}
             {#if message['isUser']}
                 <div class="pri">
