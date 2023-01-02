@@ -19,9 +19,9 @@
         margin: 3px;
         display: inline-block;
         border-radius: 10px;
-        width: 500px;
+        max-width: 500px;
         box-shadow: 7px 7px 1px #344D67;
-        overflow-wrap: normal;
+        word-wrap: break-word;
     }
     .bar-1{
         width: 30px;

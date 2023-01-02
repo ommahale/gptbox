@@ -4,8 +4,41 @@
     import arrow from '$lib/assets/arrow.svg'
     import { fade } from 'svelte/transition';
     let data;
-    let handleClick=()=>{
-        console.log(data)
+    async function handleClick(){
+        let prompt= data
+        let API_KEY="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"
+//         axios.post("https://api.openai.com/v1/completions", {
+//   prompt: prompt,
+//   model: "davinci",
+//   max_tokens: 1024
+// }, {
+//   headers: {
+//     "Content-Type": "application/json",
+//     "Authorization": `Bearer ${API_KEY}`
+//   }
+// })
+//   .then(response => {
+//     const generatedText = response.data.choices[0].text;
+//     console.log(generatedText);
+//   })
+//   .catch(error => {
+//     console.error(error);
+//   });
+let body= {
+  "prompt": prompt,
+  "model": "davincitext-davinci-003",
+  "temprature":0,
+  "max_tokens": 100
+}
+const response = await fetch("https://api.openai.com/v1/", {
+    method: 'POST',
+    headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${API_KEY}`
+    },
+    body: body
+  });
+  console.log(response)
         let newMessage={
             'isUser':true,
             'message':data

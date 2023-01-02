@@ -21,6 +21,7 @@
         border-radius: 10px;
         max-width: 500px;
         box-shadow: 7px 7px 1px #E8C4C4;
+        word-wrap: break-word;
     }
     .bar-1{
         width: 30px;
