@@ -13,23 +13,6 @@
         }
         messagelog=[...messagelog, newMessage]
         data=""
-//         axios.post("https://api.openai.com/v1/completions", {
-//   prompt: prompt,
-//   model: "davinci",
-//   max_tokens: 1024
-// }, {
-//   headers: {
-//     "Content-Type": "application/json",
-//     "Authorization": `Bearer ${API_KEY}`
-//   }
-// })
-//   .then(response => {
-//     const generatedText = response.data.choices[0].text;
-//     console.log(generatedText);
-//   })
-//   .catch(error => {
-//     console.error(error);
-//   });
 let reply;
 let body= {
   "prompt": prompt,
